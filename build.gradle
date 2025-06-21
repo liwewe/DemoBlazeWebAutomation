@@ -10,10 +10,48 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.33.0'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:6.1.0'
+
+    testImplementation 'io.cucumber:cucumber-java:7.23.0'
+    testImplementation 'io.cucumber:cucumber-testng:7.20.1'
+
+    testImplementation 'org.testng:testng:7.11.0'
+
+//    testImplementation platform('org.junit:junit-bom:5.10.0')
+//    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-test {
-    useJUnitPlatform()
+//test {
+//    useTestNG()
+////    useJUnitPlatform()
+//}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+
+tasks.register('cucumber') {
+    description = 'Running Cucumber tests'
+    dependsOn assemble, compileTestJava
+
+    doLast {
+        javaexec {
+            mainClass.set('io.cucumber.core.cli.Main')
+            classpath = configurations.cucumberRuntime +  sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'html:reports/test-report.html',
+                    '--plugin', 'json:reports/test-report.json',
+                    '--plugin', 'pretty',
+                    '--glue', 'stepdef',
+                    '--tags', "${tags}",
+                    'src/test/resources/features'
+            ]
+        }
+    }
+//    sourceSets.test.runtimeClasspath
 }
