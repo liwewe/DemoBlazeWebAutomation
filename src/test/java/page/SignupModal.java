@@ -4,12 +4,8 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import java.time.Duration;
 
 public class SignupModal extends BasePage {
 
@@ -22,6 +18,7 @@ public class SignupModal extends BasePage {
     }
 
     public void openSignupModal() {
+        driver.get("https://demoblaze.com/");
         HeaderPage header = new HeaderPage(this.driver);
         header.openSignupModal();
     }

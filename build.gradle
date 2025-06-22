@@ -22,10 +22,10 @@ dependencies {
 //    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-//test {
-//    useTestNG()
+test {
+    useTestNG()
 ////    useJUnitPlatform()
-//}
+}
 
 configurations {
     cucumberRuntime {
@@ -35,23 +35,20 @@ configurations {
 
 def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
 
-tasks.register('cucumber') {
+tasks.register('cucumber', JavaExec) {
+    group = 'verification'
     description = 'Running Cucumber tests'
-    dependsOn assemble, compileTestJava
+//    dependsOn assemble, compileTestJava
 
-    doLast {
-        javaexec {
-            mainClass.set('io.cucumber.core.cli.Main')
-            classpath = configurations.cucumberRuntime +  sourceSets.main.output + sourceSets.test.output
-            args = [
-                    '--plugin', 'html:reports/test-report.html',
-                    '--plugin', 'json:reports/test-report.json',
-                    '--plugin', 'pretty',
-                    '--glue', 'stepdef',
-                    '--tags', "${tags}",
-                    'src/test/resources/features'
-            ]
-        }
-    }
-//    sourceSets.test.runtimeClasspath
+    classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+    mainClass.set('io.cucumber.core.cli.Main')
+
+    args = [
+            '--plugin', 'pretty',
+            '--plugin', 'html:reports/test-report.html',
+            '--plugin', 'json:reports/test-report.json',
+            '--glue', 'stepdef',
+            '--tags', "${tags}",
+            'src/test/resources/features'
+    ]
 }

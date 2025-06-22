@@ -1,10 +1,12 @@
 package page;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -14,11 +16,25 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
-        driver.get("https://demoblaze.com/");
+        wait = new WebDriverWait(this.driver, Duration.ofSeconds(7));
     }
 
-    public void handleAlertIfExists() {
+    public void handleAlert(String expectedMsg) {
+        try {
+            // Tunggu alert muncul
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            // Ambil dan validasi isi alert
+            Assert.assertEquals(alert.getText(), expectedMsg);
+            // tutup alert
+            alert.accept();
+        } catch (NoAlertPresentException e) {
+            Assert.fail("Alert tidak muncul padahal seharusnya muncul");
+        } catch (Exception e) {
+            Assert.fail("Gagal memverifikasi alert: " + e.getMessage());
+        }
+    }
+
+    public void handleAlert() {
         try {
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             System.out.println("ALERT FOUND: " + alert.getText());
@@ -28,5 +44,4 @@ public class BasePage {
             System.out.println("Page setelah login: " + driver.getCurrentUrl());
         }
     }
-
 }

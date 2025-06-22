@@ -23,3 +23,10 @@ Feature: Login
     And user inputs password with ""
     And user clicks the login button
     Then alert message "Please fill out Username and Password." should appear
+
+  @logout
+  Scenario: Successful logout from an active session
+    Given user is logged in with username "linjoo" and password "123"
+    When user clicks the logout button
+    Then user should be redirected to the homepage
+    And user should be logged out
