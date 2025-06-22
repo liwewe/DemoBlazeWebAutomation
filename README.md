@@ -96,9 +96,15 @@ You can filter tests using the following tags:
 - `@Cart` 	– Cart persistence test  
 - `@Checkout` – Checkout behavior when cart is empty  
 
-> You can combine multiple tags like this:
+You can combine multiple tags like this:  
+
+> 💻 Di Windows CMD atau PowerShell:
 ```bash
-./gradlew cucumber -Ptags="@invalid-login or @invalid-signup"
+./gradlew cucumber "-Ptags=@invalid-login or @invalid-signup"
+```
+> 💻 Di Unix (Linux/macOS):
+```bash
+./gradlew cucumber '-Ptags=@cart or @checkout'
 ```
 
 ✅ Requirements
