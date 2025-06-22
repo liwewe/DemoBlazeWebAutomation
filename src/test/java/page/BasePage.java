@@ -20,17 +20,40 @@ public class BasePage {
     }
 
     public void handleAlert(String expectedMsg) {
+        String actualMsg = getAlertTextIfExists();
+        Assert.assertNotNull(actualMsg, "Alert tidak muncul");
+        Assert.assertEquals(actualMsg, expectedMsg, "Pesan alert tidak sesuai");
+        acceptAlertIfExists(); // baru ditutup setelah dicek
+//        try {
+//            // Tunggu alert muncul
+//            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+//            // Ambil dan validasi isi alert
+//            Assert.assertEquals(alert.getText(), expectedMsg);
+//            // tutup alert
+//            alert.accept();
+//        } catch (NoAlertPresentException e) {
+//            Assert.fail("Alert tidak muncul padahal seharusnya muncul");
+//        } catch (Exception e) {
+//            Assert.fail("Gagal memverifikasi alert: " + e.getMessage());
+//        }
+    }
+
+    public String getAlertTextIfExists() {
         try {
-            // Tunggu alert muncul
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-            // Ambil dan validasi isi alert
-            Assert.assertEquals(alert.getText(), expectedMsg);
-            // tutup alert
+            return alert.getText();
+        } catch (TimeoutException e) {
+            return null;
+        }
+    }
+
+    public void acceptAlertIfExists() {
+        try {
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             alert.accept();
-        } catch (NoAlertPresentException e) {
-            Assert.fail("Alert tidak muncul padahal seharusnya muncul");
-        } catch (Exception e) {
-            Assert.fail("Gagal memverifikasi alert: " + e.getMessage());
+        } catch (TimeoutException ignored) {
+            // tidak ada alert
         }
     }
 

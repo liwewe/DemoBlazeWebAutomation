@@ -36,10 +36,6 @@ public class LoginModal extends BasePage {
         driver.findElement(loginButton).click();
     }
 
-    public void waitLoggedIn() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(header.logoutLink));
-    }
-
     public boolean isLoggedIn() {
         try {
             return driver.findElement(header.logoutLink).isDisplayed();

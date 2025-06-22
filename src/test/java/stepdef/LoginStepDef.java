@@ -42,6 +42,7 @@ public class LoginStepDef extends BaseTest {
 
     @Then("alert message {string} should appear")
     public void alertMessageShouldAppear(String expectedMsg) {
+        if (loginModal == null) new LoginModal(driver);
         loginModal.handleAlert(expectedMsg);
     }
 

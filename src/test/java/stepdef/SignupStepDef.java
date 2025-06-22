@@ -4,12 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import page.LoginModal;
 import page.SignupModal;
 import utils.BaseTest;
 
 public class SignupStepDef extends BaseTest {
 
     protected SignupModal signupModal;
+    LoginModal loginModal;
 
     @Given("user is on signup modal")
     public void userIsOnSignupModal() {
@@ -34,6 +36,9 @@ public class SignupStepDef extends BaseTest {
 
     @Then("popup message {string} appears")
     public void popupMessageAppears(String msg) {
-        signupModal.validateErrorMessage(msg);
+        if(loginModal == null) loginModal = new LoginModal(driver);
+
+        loginModal.handleAlert(msg);
+//        signupModal.validateErrorMessage(msg);
     }
 }
