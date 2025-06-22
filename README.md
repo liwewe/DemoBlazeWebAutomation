@@ -160,7 +160,8 @@ This project supports auto-generated reports in the `reports/` directory:
 ---
 
 ## Screenshot
-
+<img src="https://github.com/user-attachments/assets/290733b9-70f0-49b5-8af1-7614646d3a8c" height="150" alt="Terminal Run"/>
+<img src="https://github.com/user-attachments/assets/095d7e75-8457-44ee-b1c7-928232d43817" height="150" alt="HTML Reports"/>
 
 ## Acknowledgments
 This project was developed as part of the QA Engineer Online Course by JayJay.
