@@ -40,7 +40,7 @@ public class BasePage {
             System.out.println("ALERT FOUND: " + alert.getText());
             alert.accept(); // atau dismiss() jika perlu
         } catch (TimeoutException e) {
-            System.out.println("Tidak ada alert setelah login.");
+//            System.out.println("Tidak ada alert setelah login.");
             System.out.println("Page setelah login: " + driver.getCurrentUrl());
         }
     }

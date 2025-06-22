@@ -47,15 +47,14 @@ public class LoginStepDef extends BaseTest {
 
     @Given("user is logged in with username {string} and password {string}")
     public void userIsLoggedInWithUsernameAndPassword(String username, String pass) {
-        if (loginModal == null)
-            loginModal = new LoginModal(driver);
-
-        loginModal.openLoginModal();
-        loginModal.inputUsername(username);
-        loginModal.inputPassword(pass);
-        loginModal.clickLoginButton();
-        loginModal.handleAlert();
-        loginModal.waitLoggedIn();
+        if(!loginModal.isLoggedIn()){
+            loginModal.openLoginModal();
+            loginModal.inputUsername(username);
+            loginModal.inputPassword(pass);
+            loginModal.clickLoginButton();
+            loginModal.handleAlert();
+//            loginModal.waitLoggedIn();
+        }
     }
 
 

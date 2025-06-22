@@ -31,11 +31,20 @@ public class LoginModal extends BasePage {
     }
 
     public void clickLoginButton() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         driver.findElement(loginButton).click();
     }
 
     public void waitLoggedIn() {
-        wait.until(ExpectedConditions.elementToBeClickable(header.logoutLink));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(header.logoutLink));
+    }
+
+    public boolean isLoggedIn() {
+        try {
+            return driver.findElement(header.logoutLink).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
