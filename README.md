@@ -7,8 +7,6 @@ This project was created as part of an online QA Engineer course assignment by J
 
 This project covers automated test scenarios for the following core features of [demoblaze.com](https://www.demoblaze.com):
 
----
-
 ### 🔐 Feature: Signup
 
 | Scenario Description                                      | Tag             | Covered Validation                                |
@@ -18,7 +16,6 @@ This project covers automated test scenarios for the following core features of 
 | Signup with valid username but empty password             | @invalid-signup | Validates password requirement                    |
 | Signup with empty username but valid password             | @invalid-signup | Validates username requirement                    |
 
----
 
 ### 🔓 Feature: Login & Logout
 
@@ -29,21 +26,16 @@ This project covers automated test scenarios for the following core features of 
 | Login with empty username and password                    | @invalid-login  | Validates required field alert                    |
 | Logout from an active session                             | @logout         | Validates logout functionality                    |
 
----
 
 ### 🛒 Feature: Cart & Checkout
 
 | Scenario Description                                      | Tag             | Covered Validation                                |
 |-----------------------------------------------------------|-----------------|---------------------------------------------------|
-| Cart items persist after logout and re-login              | @Cart           | Validates cart state persistence                  |
-| Attempt to checkout with an empty cart                    | @Checkout       | Validates behavior when placing order with empty cart |
-
----
+| Cart items persist after logout and re-login              | @cart           | Validates cart state persistence                  |
+| Attempt to checkout with an empty cart                    | @checkout       | Validates behavior when placing order with empty cart |
 
 Each scenario is written using **Gherkin syntax** and executed with **Selenium & TestNG**
 You can find the complete step definitions and page interactions in the corresponding test classes.
-
-
 
 ## 🛠 Technologies Used
 
@@ -62,6 +54,7 @@ Follow the steps below to set up and run the project locally:
 ```bash
 git clone https://github.com/liwewe/DemoBlazeWebAutomation.git
 cd DemoBlazeWebAutomation
+```
 
 ### 2. Open in Your IDE
 
@@ -75,19 +68,22 @@ run the following command to download dependencies:
 
 ```bash
 gradle build
-
+```
 ### 4. Run the Tests
 
 ✅ Run All Cucumber Tests
 ```bash
 ./gradlew cucumber
-
+```
 Or, run individual test classes directly from your IDE using the TestNG runner.
 
 🎯 Run Tests by Tag
+
 You can target specific scenarios using tags:
+
 ```bash
-./gradlew cucumber -PTags=@valid-login
+./gradlew cucumber -Ptags=@valid-login
+```
 
 #### 🏷 Available Tags
 
@@ -100,8 +96,16 @@ You can filter tests using the following tags:
 - `@Cart` 	– Cart persistence test  
 - `@Checkout` – Checkout behavior when cart is empty  
 
-> You can combine multiple tags like this:  
-> `./gradlew cucumber -PTags="@invalid-login or @invalid-signup"`
+You can combine multiple tags like this:  
+
+> 💻 Di Windows CMD atau PowerShell:
+```bash
+./gradlew cucumber "-Ptags=@invalid-login or @invalid-signup"
+```
+> 💻 Di Unix (Linux/macOS):
+```bash
+./gradlew cucumber '-Ptags=@cart or @checkout'
+```
 
 ✅ Requirements
 - Java Development Kit (JDK) 8 or above
@@ -112,7 +116,6 @@ You can filter tests using the following tags:
 📌 Notes
 - Make sure the ChromeDriver version matches your installed Chrome browser.
 - Tests are written using the Page Object Model (POM) for better maintainability.
-
 
 ## 📁 Project Structure
 
@@ -156,22 +159,9 @@ This project supports auto-generated reports in the `reports/` directory:
 
 ---
 
-### 🧩 Optional Integrations
-
-You can integrate additional reporting tools like:
-
-#### ✅ **Allure Report** (Recommended)
-1. Add Allure dependencies and Gradle plugin in `build.gradle`.
-2. Generate report from the Cucumber JSON output:
-   ```bash
-   allure serve reports/test-report.json
-   or
-   ```bash
-   allure generate reports/test-report.json -o allure-report
-   allure open allure-report
-
 ## Screenshot
-
+<img src="https://github.com/user-attachments/assets/290733b9-70f0-49b5-8af1-7614646d3a8c" height="150" alt="Terminal Run"/>
+<img src="https://github.com/user-attachments/assets/095d7e75-8457-44ee-b1c7-928232d43817" height="150" alt="HTML Reports"/>
 
 ## Acknowledgments
 This project was developed as part of the QA Engineer Online Course by JayJay.
