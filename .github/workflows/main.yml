@@ -55,6 +55,6 @@ jobs:
       if: always()
       with:
         # Set a personal access token for pushing to the remote branch.
-        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        personal_token: ${{ secrets.GH_TOKEN }}
         # Set an input directory for deployment.
-        publish_dir: reports
+        publish_dir: ./reports
