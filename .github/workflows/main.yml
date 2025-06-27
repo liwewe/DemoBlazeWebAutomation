@@ -14,7 +14,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  WebAutomationTest:
+  run-web-automation-test:
 
     runs-on: ubuntu-latest
 
@@ -40,3 +40,21 @@ jobs:
     # Execute gradlew command to run test
     - name: Execute Test
       run: ./gradlew cucumber
+
+    #Archive Test Result
+    - name: Archive Test Result
+      uses: actions/upload-artifact@v4.6.2
+      if: always()
+      with:
+        name: Cucumber Reports
+        path: reports
+
+    # Deploy to Github pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4.0.0
+      if: always()
+      with:
+        # Set a personal access token for pushing to the remote branch.
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        # Set an input directory for deployment.
+        publish_dir: reports
