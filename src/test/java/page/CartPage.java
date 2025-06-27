@@ -30,7 +30,7 @@ public class CartPage extends BasePage {
 
         while (!deleteLinks.isEmpty()) {
             // Klik "Delete" pertama
-            deleteLinks.getFirst().click();
+            deleteLinks.get(0).click();
             // Tunggu sampai jumlah tombol Delete berkurang
             wait.until(ExpectedConditions.numberOfElementsToBeLessThan(deleteLink, deleteLinks.size()));
             // Ambil ulang elemen "Delete"
