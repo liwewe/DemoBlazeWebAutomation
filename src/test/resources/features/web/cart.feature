@@ -1,6 +1,6 @@
 Feature: Cart
 
-  @cart
+  @web @cart
   Scenario: Cart items remain after logout and re-login
     Given user is logged in with username "linjoo" and password "123"
     And user adds item "Samsung galaxy s6" to the cart
@@ -9,7 +9,7 @@ Feature: Cart
     And user is logged in with username "linjoo" and password "123"
     Then the item "Samsung galaxy s6" should be present in the cart
 
-  @checkout
+  @web @checkout
   Scenario: Checkout with empty cart
     Given user is logged in with username "linjoo" and password "123"
     And user navigates to the cart page

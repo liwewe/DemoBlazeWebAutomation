@@ -1,4 +1,4 @@
-package page;
+package page.web;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

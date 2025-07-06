@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = "src/test/resources/features",           // Lokasi file .feature
-        glue = "stepdef",                     // Package berisi Step Definitions
+        glue = "stepdef/web",                     // Package berisi Step Definitions
         plugin = {
                 "pretty",
                 "html:reports/test-report.html",        // Output HTML
@@ -18,6 +18,6 @@ import org.testng.annotations.Test;
 )
 
 @Test
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class TestRunnerWeb extends AbstractTestNGCucumberTests {
 
 }

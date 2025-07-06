@@ -1,14 +1,14 @@
-package stepdef;
+package stepdef.web;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import page.LoginModal;
-import page.SignupModal;
-import utils.BaseTest;
+import page.web.LoginModal;
+import page.web.SignupModal;
+import utils.BaseTestWeb;
 
-public class SignupStepDef extends BaseTest {
+public class SignupStepDef extends BaseTestWeb {
 
     protected SignupModal signupModal;
     LoginModal loginModal;

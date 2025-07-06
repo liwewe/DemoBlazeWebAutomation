@@ -1,6 +1,6 @@
 Feature: Login
 
-  @valid-login
+  @web @valid-login
   Scenario: Successful login with valid credentials
     Given user is on the login modal
     When user inputs username with "linjoo"
@@ -8,7 +8,7 @@ Feature: Login
     And user clicks the login button
     Then user should see homepage with welcome message "Welcome linjoo"
 
-  @invalid-login
+  @web @invalid-login
   Scenario: Login with invalid credentials
     Given user is on the login modal
     When user inputs username with "linn"
@@ -16,7 +16,7 @@ Feature: Login
     And user clicks the login button
     Then alert message "Wrong password." should appear
 
-  @invalid-login
+  @web @invalid-login
   Scenario: Login with empty username and password
     Given user is on the login modal
     When user inputs username with ""
@@ -24,7 +24,7 @@ Feature: Login
     And user clicks the login button
     Then alert message "Please fill out Username and Password." should appear
 
-  @logout
+  @web @logout
   Scenario: Successful logout from an active session
     Given user is logged in with username "linjoo" and password "123"
     When user clicks the logout button

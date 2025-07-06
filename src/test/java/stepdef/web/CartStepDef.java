@@ -1,15 +1,15 @@
-package stepdef;
+package stepdef.web;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import page.CartPage;
-import page.HomePage;
-import page.OrderModal;
-import page.ProductPage;
-import utils.BaseTest;
+import page.web.CartPage;
+import page.web.HomePage;
+import page.web.OrderModal;
+import page.web.ProductPage;
+import utils.BaseTestWeb;
 
-public class CartStepDef extends BaseTest {
+public class CartStepDef extends BaseTestWeb {
 
     HomePage homePage = new HomePage(driver);
     CartPage cartPage = new CartPage(driver);

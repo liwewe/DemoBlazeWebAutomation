@@ -1,14 +1,14 @@
-package stepdef;
+package stepdef.web;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import page.HomePage;
-import page.LoginModal;
-import utils.BaseTest;
+import page.web.HomePage;
+import page.web.LoginModal;
+import utils.BaseTestWeb;
 
-public class LoginStepDef extends BaseTest {
+public class LoginStepDef extends BaseTestWeb {
 
     LoginModal loginModal = new LoginModal(driver);
     HomePage homePage = new HomePage(driver);

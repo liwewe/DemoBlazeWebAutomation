@@ -2,7 +2,7 @@
 <suite name="CucumberSuite">
     <test name="Web Automation Test">
         <classes>
-            <class name="runners.TestRunner"/>
+            <class name="runners.TestRunnerWeb"/>
         </classes>
     </test>
 </suite>

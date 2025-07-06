@@ -1,12 +1,10 @@
-package stepdef;
+package stepdef.web;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import utils.BaseTest;
+import utils.BaseTestWeb;
 
-public class CucumberHooks extends BaseTest {
+public class CucumberHooks extends BaseTestWeb {
 
     @Before
     public void beforeTest() {
