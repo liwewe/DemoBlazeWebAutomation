@@ -1,4 +1,4 @@
-package utils;
+package models.api;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -20,7 +20,20 @@ public class ApiModels {
         return myRequest.when().get(url);
     }
 
-//    public static Response sendPostRequest(String url) {
-//
-//    }
+    public static Response sendPostRequest(Object data, String url) {
+        setupHeaders();
+        myRequest.body(data);
+        return myRequest.when().post(url);
+    }
+
+    public static Response sendPutRequest(Object data, String url) {
+        setupHeaders();
+        myRequest.body(data);
+        return myRequest.when().put(url);
+    }
+
+    public static Response sendDeleteRequest(String url) {
+        setupHeaders();
+        return myRequest.when().delete(url);
+    }
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CartPage extends BasePage {
 
@@ -56,4 +57,27 @@ public class CartPage extends BasePage {
         Assert.assertTrue(jumlahItem > 0, "Tidak ada item " + productName + " di cart");
     }
 
+    public void validateTotalCheckout(int expectedValue) {
+        By total = By.id("totalm");
+        wait.until(ExpectedConditions.textMatches(total, Pattern.compile("\\d+")));
+        WebElement totalObj = driver.findElement(total);
+        Assert.assertEquals(totalObj.getText(), "Total: " + expectedValue);
+    }
+
+    public void fillUserDetails() {
+        By nameLocator = By.id("name");
+        By ccLocator = By.id("card");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(nameLocator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ccLocator));
+        driver.findElement(nameLocator).sendKeys("linjoo");
+        driver.findElement(ccLocator).sendKeys("321");
+    }
+
+    public void isThankyouModalOpen() {
+        By modalLocator = By.className("sweet-alert");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(modalLocator));
+        WebElement modal = driver.findElement(modalLocator);
+        Assert.assertTrue(modal.isDisplayed());
+        clickButton("OK");
+    }
 }

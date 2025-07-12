@@ -5,6 +5,9 @@ import io.restassured.response.Response;
 
 import java.io.File;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.instanceOf;
 import static utils.Constants.BASE_SCHEMA_PATH;
 
 public class ResponseValidator {
@@ -34,5 +37,10 @@ public class ResponseValidator {
 
         res.then().assertThat()
                 .body(JsonSchemaValidator.matchesJsonSchema(schemaFile));
+    }
+
+    public static void validateNonEmptyArray(Response response, String arrayPath) {
+        // Validasi array size > 0
+        response.then().body(arrayPath + ".size()", greaterThan(0));
     }
 }

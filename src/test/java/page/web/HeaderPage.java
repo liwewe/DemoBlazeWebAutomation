@@ -13,6 +13,7 @@ public class HeaderPage extends BasePage {
     By signupLink = By.id("signin2");
     By loginLink = By.id("login2");
     By logoutLink = By.id("logout2");
+
     By welcomeMessage = By.id("nameofuser");
 
     protected void openSignupModal() {

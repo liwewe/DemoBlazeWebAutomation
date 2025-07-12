@@ -47,4 +47,24 @@ public class CartStepDef extends BaseTestWeb {
     public void orderFormIsOpen() {
         orderModal.validateIsOpen();
     }
+
+    @And("user navigates to the home page")
+    public void userNavigatesToTheHomePage() {
+        homePage.openHomePage();
+    }
+
+    @And("Total is {int}")
+    public void totalIs(int total) {
+        cartPage.validateTotalCheckout(total);
+    }
+
+    @When("user fill user details")
+    public void userFillUserDetails() {
+        cartPage.fillUserDetails();
+    }
+
+    @Then("Thank you modal is open")
+    public void thankYouModalIsOpen() {
+        cartPage.isThankyouModalOpen();
+    }
 }

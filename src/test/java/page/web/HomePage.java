@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import utils.Constants;
 
 public class HomePage extends BasePage{
 
@@ -15,7 +16,11 @@ public class HomePage extends BasePage{
     public HomePage(WebDriver driver) {
         super(driver);
         header = new HeaderPage(driver);
-        driver.get("https://demoblaze.com/");
+        driver.get(Constants.BASE_DEMOBLAZE);
+    }
+
+    public void openHomePage() {
+        driver.get(Constants.BASE_DEMOBLAZE);
     }
 
     public void clickProduct(String productName) {
