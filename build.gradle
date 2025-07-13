@@ -40,22 +40,64 @@ configurations {
     }
 }
 
-def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+def optionalTag = project.hasProperty('tags') ? project.getProperty('tags') : ''
+def finalWebTag = optionalTag ? "(@web) and (${optionalTag})" : "@web"
 
-tasks.register('cucumber', JavaExec) {
+tasks.register('web', JavaExec) {
     group = 'verification'
-    description = 'Running Cucumber tests'
-//    dependsOn assemble, compileTestJava
+    description = 'Run Web tests with optional tag filter'
+    dependsOn 'testClasses'
 
-    classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+    classpath = sourceSets.test.runtimeClasspath
     mainClass.set('io.cucumber.core.cli.Main')
 
     args = [
             '--plugin', 'pretty',
-            '--plugin', 'html:reports/test-report.html',
-            '--plugin', 'json:reports/test-report.json',
-            '--glue', 'stepdef',
-            '--tags', "${tags}",
-            'src/test/resources/features'
+            '--plugin', 'html:reports/web-report.html',
+            '--plugin', 'json:reports/web-report.json',
+            '--glue', 'stepdef/web',
+            '--tags', finalWebTag,
+            'src/test/resources/features/web'
     ]
 }
+
+def finalApiTag = optionalTag ? "(@api) and (${optionalTag})" : "@api"
+
+tasks.register('api', JavaExec) {
+    group = 'verification'
+    description = 'Run API tests with optional tag filter'
+    dependsOn 'testClasses'
+
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass.set('io.cucumber.core.cli.Main')
+
+    args = [
+            '--plugin', 'pretty',
+            '--plugin', 'html:reports/api-report.html',
+            '--plugin', 'json:reports/api-report.json',
+            '--glue', 'stepdef/api',
+            '--tags', finalApiTag,
+            'src/test/resources/features/api'
+    ]
+}
+
+
+//def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+//
+//tasks.register('cucumber', JavaExec) {
+//    group = 'verification'
+//    description = 'Running Cucumber tests'
+////    dependsOn assemble, compileTestJava
+//
+//    classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+//    mainClass.set('io.cucumber.core.cli.Main')
+//
+//    args = [
+//            '--plugin', 'pretty',
+//            '--plugin', 'html:reports/test-report.html',
+//            '--plugin', 'json:reports/test-report.json',
+//            '--glue', 'stepdef',
+//            '--tags', "${tags}",
+//            'src/test/resources/features'
+//    ]
+//}

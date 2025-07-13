@@ -5,16 +5,16 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/resources/features",           // Lokasi file .feature
+        features = "src/test/resources/features/web",           // Lokasi file .feature
         glue = "stepdef/web",                     // Package berisi Step Definitions
         plugin = {
                 "pretty",
-                "html:reports/test-report.html",        // Output HTML
-                "json:reports/test-report.json" //,                // Output JSON
+                "html:reports/web-report.html",        // Output HTML
+                "json:reports/web-report.json" //,                // Output JSON
 //                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" // Untuk Allure report
-        } //,
+        },
 //        monochrome = true,
-//        tags = "@smoke"                                     // Bisa disesuaikan
+        tags = "@web"                                     // Bisa disesuaikan
 )
 
 @Test
