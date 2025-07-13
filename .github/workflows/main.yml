@@ -51,17 +51,6 @@ jobs:
         name: Cucumber Reports
         path: reports
 
-    # Prepare report folder structure
-    - name: Prepare report folder structure
-      run: 
-        mkdir -p reports/web
-        mkdir -p reports/api
-        cp -r reports/web-report.html reports/web/
-        cp -r reports/web-report.json reports/web/
-        cp -r reports/api-report.html reports/api/
-        cp -r reports/api-report.json reports/api/
-        cp -n index.html reports/ || true
-      
     # Deploy to Github pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4.0.0
