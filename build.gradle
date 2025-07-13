@@ -53,8 +53,8 @@ tasks.register('web', JavaExec) {
 
     args = [
             '--plugin', 'pretty',
-            '--plugin', 'html:reports/web-report.html',
-            '--plugin', 'json:reports/web-report.json',
+            '--plugin', 'html:reports/web/web-report.html',
+            '--plugin', 'json:reports/web/web-report.json',
             '--glue', 'stepdef/web',
             '--tags', finalWebTag,
             'src/test/resources/features/web'
@@ -73,8 +73,8 @@ tasks.register('api', JavaExec) {
 
     args = [
             '--plugin', 'pretty',
-            '--plugin', 'html:reports/api-report.html',
-            '--plugin', 'json:reports/api-report.json',
+            '--plugin', 'html:reports/api/api-report.html',
+            '--plugin', 'json:reports/api/api-report.json',
             '--glue', 'stepdef/api',
             '--tags', finalApiTag,
             'src/test/resources/features/api'

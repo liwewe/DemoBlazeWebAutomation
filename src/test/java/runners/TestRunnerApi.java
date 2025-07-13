@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
         glue = "stepdef/api",                     // Package berisi Step Definitions
         plugin = {
                 "pretty",
-                "html:reports/api-report.html",        // Output HTML
-                "json:reports/api-report.json" //,                // Output JSON
+                "html:reports/api/api-report.html",        // Output HTML
+                "json:reports/api/api-report.json" //,                // Output JSON
 //                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" // Untuk Allure report
         },
 //        monochrome = true,
