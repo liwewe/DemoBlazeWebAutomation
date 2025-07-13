@@ -1,10 +1,11 @@
-# DemoBlazeWebAutomation
+# JayJay Final Project
 
 A web automation project using A web automation project using [demoblaze.com](https://www.demoblaze.com).  
 This project was created as part of an online QA Engineer course assignment by JayJay.
 
 ## ✅ Test Coverage
 
+### WEB Automation
 This project covers automated test scenarios for the following core features of [demoblaze.com](https://www.demoblaze.com):
 
 ### 🔐 Feature: Signup
@@ -32,7 +33,25 @@ This project covers automated test scenarios for the following core features of 
 | Scenario Description                                      | Tag             | Covered Validation                                |
 |-----------------------------------------------------------|-----------------|---------------------------------------------------|
 | Cart items persist after logout and re-login              | @cart           | Validates cart state persistence                  |
-| Attempt to checkout with an empty cart                    | @checkout       | Validates behavior when placing order with empty cart |
+| Attempt to checkout                                       | @checkout       | Validates behavior when placing order             |
+
+
+### API Automation
+This project covers automated test scenarios for the following core features of [dummyapi.io](https://dummyapi.io/docs):
+
+### 👤 User API
+| Scenario Description                    | Tag            | Covered Validation                     |
+|-----------------------------------------|----------------|----------------------------------------|
+| Get user by ID                          | @get-user      | Validates successful user retrieval    |
+| Create new user                         | @create-user   | Validates user creation flow           |
+| Update existing user                    | @update-user   | Validates user update functionality    |
+| Delete user                             | @delete-user   | Validates user deletion process        |
+
+
+### 🏷️ Tag API
+| Scenario Description                    | Tag          | Covered Validation                     |
+|-----------------------------------------|--------------|----------------------------------------|
+| Get list of all tags                    | @get-tag     | Validates tag list retrieval           |
 
 Each scenario is written using **Gherkin syntax** and executed with **Selenium & TestNG**
 You can find the complete step definitions and page interactions in the corresponding test classes.
@@ -41,9 +60,11 @@ You can find the complete step definitions and page interactions in the correspo
 
 - Java  
 - Selenium
+- Rest Assured
 - TestNG  
-- Gradle (pilih sesuai yang kamu pakai)  
+- Gradle
 - Cucumber
+- Github Actions
 
 ## ⚙️ Setup & Installation
 
@@ -71,40 +92,53 @@ gradle build
 ```
 ### 4. Run the Tests
 
-✅ Run All Cucumber Tests
+✅ Run Web Tests
 ```bash
-./gradlew cucumber
+./gradlew web
+```
+✅ Run API Tests
+```bash
+./gradlew api
 ```
 Or, run individual test classes directly from your IDE using the TestNG runner.
 
 🎯 Run Tests by Tag
 
 You can target specific scenarios using tags:
-
+For web test:
 ```bash
-./gradlew cucumber -Ptags=@valid-login
+./gradlew web -Ptags=@valid-login
 ```
+or for API test:
+```bash
+./gradlew api -Ptags=@negative
+```
+
 
 #### 🏷 Available Tags
 
 You can filter tests using the following tags:
-
+##### Web Tags
 - `@valid-login` – Valid login scenario  
 - `@invalid-login` – Invalid credentials and empty login fields  
 - `@logout` – Logout functionality  
 - `@invalid-signup` – All negative test cases for signup  
 - `@Cart` 	– Cart persistence test  
-- `@Checkout` – Checkout behavior when cart is empty  
+- `@Checkout` – Checkout behavior
+
+##### API Tags
+- `@positive` – Positive scenarios
+- `@negative` – Negative scenarios
 
 You can combine multiple tags like this:  
 
 > 💻 Di Windows CMD atau PowerShell:
 ```bash
-./gradlew cucumber "-Ptags=@invalid-login or @invalid-signup"
+./gradlew web "-Ptags=@invalid-login or @invalid-signup"
 ```
 > 💻 Di Unix (Linux/macOS):
 ```bash
-./gradlew cucumber '-Ptags=@cart or @checkout'
+./gradlew web '-Ptags=@cart or @checkout'
 ```
 
 ✅ Requirements
@@ -142,8 +176,10 @@ The project follows a standard structure for a Java-based automation framework u
 
 - **`reports/`**  
   Stores generated test reports.  
-  - `test-report.html`: HTML format for quick overview  
-  - `test-report.json`: Can be used with third-party tools like Allure
+  - `api/api-report.html`: API Test Report in HTML format for quick overview  
+  - `api/api-report.json`: API Test Report in JSON format, can be used with third-party tools like Allure
+  - `web/web-report.html`: WEB Test Repoert in HTML format for quick overview  
+  - `web/web-report.json`: WEB Test Report in JSON format, can be used with third-party tools like Allure
 
 ---
 
@@ -151,18 +187,18 @@ The project follows a standard structure for a Java-based automation framework u
 
 This project supports auto-generated reports in the `reports/` directory:
 
-- **HTML Report** (`test-report.html`)  
+- **HTML Report** (`web/web-report.html`)  
   A visual summary of test execution, viewable in any browser.
 
-- **JSON Report** (`test-report.json`)  
+- **JSON Report** (`api/api-report.json`)  
   Machine-readable result, commonly used as input for reporting tools like **Allure** or **ExtentReports**.
 
 ---
 
 ## Screenshot
-<img src="https://github.com/user-attachments/assets/290733b9-70f0-49b5-8af1-7614646d3a8c" height="150" alt="Terminal Run"/>
-<img src="https://github.com/user-attachments/assets/095d7e75-8457-44ee-b1c7-928232d43817" height="150" alt="HTML Reports"/>
+<img src="https://github.com/user-attachments/assets/290733b9-70f0-49b5-8af1-7614646d3a8c" height="150" alt="Web Terminal Run"/>
+<img src="https://github.com/user-attachments/assets/095d7e75-8457-44ee-b1c7-928232d43817" height="150" alt="Web HTML Reports"/>
 
 ## Acknowledgments
-This project was developed as part of the QA Engineer Online Course by JayJay.
-Thanks to the creators of demoblaze.com for providing the demo site.
+This project was developed as Final Project of the QA Engineer Online Course by JayJay.
+Thanks to the creators of demoblaze.com and dummyapi.io for providing the demo site.
