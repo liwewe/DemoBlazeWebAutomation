@@ -1,7 +1,9 @@
-# JayJay Final Project
-
-A web automation project using A web automation project using [demoblaze.com](https://www.demoblaze.com).  
-This project was created as part of an online QA Engineer course assignment by JayJay.
+# Automation Testing Framework
+This project is a final assignment for JayJay Online School, showcasing an integrated automation framework for both Web UI and API testing.
+🌐 Web Testing using [demoblaze.com](https://www.demoblaze.com)  
+🔌 API Testing using [dummyapi.io](https://dummyapi.io/docs)  
+🧪 Built with Java, Selenium, Rest Assured, Cucumber, TestNG, and Gradle  
+⚙️ Includes Gherkin-based test cases, separated folders for Web and API, and GitHub Actions for CI
 
 ## ✅ Test Coverage
 
