@@ -8,13 +8,12 @@
 name: Demoblaze Web Automation Workflow
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  run-web-automation-test:
+  run-web-api-automation-test:
 
     runs-on: ubuntu-latest
 
@@ -38,8 +37,11 @@ jobs:
       run: chmod +x gradlew
 
     # Execute gradlew command to run test
-    - name: Execute Test
-      run: ./gradlew cucumber
+    - name: Execute Web Test
+      run: ./gradlew web
+
+    - name: Execute Api Test
+      run: ./gradlew api
 
     #Archive Test Result
     - name: Archive Test Result
