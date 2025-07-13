@@ -198,6 +198,8 @@ This project supports auto-generated reports in the `reports/` directory:
 ## Screenshot
 <img src="https://github.com/user-attachments/assets/290733b9-70f0-49b5-8af1-7614646d3a8c" height="150" alt="Web Terminal Run"/>
 <img src="https://github.com/user-attachments/assets/095d7e75-8457-44ee-b1c7-928232d43817" height="150" alt="Web HTML Reports"/>
+<img src="https://github.com/user-attachments/assets/47cc57bb-4b36-4bb2-8380-e79f6bad71b6" height="150" alt="API Terminal Run"/>
+<img src="https://github.com/user-attachments/assets/b980df4d-64d6-4fe6-b4e0-ad9e0b8ee406" height="150" alt="API HTML Reports"/>
 
 ## Acknowledgments
 This project was developed as Final Project of the QA Engineer Online Course by JayJay.
